@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
     }
   resources :posts
+  get "/user/:id", to: "users#profile", as: "user"
   # get 'pages/home'
   # get 'pages/about'
   # get "home", to: "pages#home"
