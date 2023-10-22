@@ -74,5 +74,5 @@ end
 
 gem 'faker'
 gem "devise", "~> 4.9"
-
 gem "noticed", "~> 1.6"
+gem 'ransack', '~> 2.5'
