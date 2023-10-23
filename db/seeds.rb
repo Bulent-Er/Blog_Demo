@@ -5,13 +5,31 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create(email: "bropil@gmail.com",name: "Bülent" password: "123456", password_confirmation: "123456")
-User.create(email: "ezel@gmail.com",name: "Ezel" password: "123456", password_confirmation: "123456")
-5.times do |index|
-  Post.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph_by_chars.truncate((index+1)*20), user_id: User.first.id)
-end
-5.times do |index|
-  Post.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph_by_chars.truncate((index+1)*20), user_id: User.find(2).id)
+User.create(
+  email: "bropil@gmail.com",
+  name: "Bülent",
+  password: "123456", 
+  password_confirmation: "123456",
+  role: User.roles[:admin])
+
+User.create(
+  email: "ezel@gmail.com",
+  name: "Ezel",
+  password: "123456", 
+  password_confirmation: "123456")
+
+10.times do |x|
+  post = Post.create(
+    title: "Post #{x+1}", 
+    body: Faker::Lorem.sentence(word_count: 10*(x+1)), 
+    user_id: x.odd? ? User.find(1).id : User.find(2).id)
+    
+    5.times do |y|
+      Comment.create(
+        post_id:  post.id,
+        body: Faker::Lorem.sentence(word_count: 5*(y+1)), 
+        user_id: y.even? ? User.find(1).id : User.find(2).id)
+    end
 end
 
 
