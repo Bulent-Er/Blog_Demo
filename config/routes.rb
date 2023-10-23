@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+  get 'admin/post'
+  get 'admin/comments'
+  get 'admin/users'
+  get 'admin/show_post'
   root "pages#home"
 
   get 'search', to: 'search#index'
