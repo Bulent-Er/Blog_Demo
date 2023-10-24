@@ -21,6 +21,7 @@ User.create(
 10.times do |x|
   post = Post.create(
     title: "Post #{x+1}", 
+    slug: nil,
     body: Faker::Lorem.sentence(word_count: 10*(x+1)), 
     user_id: x.odd? ? User.find(1).id : User.find(2).id)
     
