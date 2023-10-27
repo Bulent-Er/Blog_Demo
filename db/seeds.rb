@@ -18,32 +18,28 @@ User.create(
             password: "123456", 
             password_confirmation: "123456")
 
-posts = []
-comments = []
 elapsed = Benchmark.measure do
+ posts = []
+ bulent = User.first
+ ezel = User.second
   10.times do |x|
     puts "Creating post #{x+1}"
     post = Post.new(
       title: "Post #{x+1}", 
       slug: nil,
       body: Faker::Lorem.sentence(word_count: 10*(x+1)), 
-      user_id: x.odd? ? User.find(1).id : User.find(2).id)
-      post.save!
-      posts << post
-      
-      5.times do |y|
-      puts "Creating comment #{y+1} for post #{x+1}"
-      comment = Comment.new(
-          post_id:  post.id,
-          body: Faker::Lorem.sentence(word_count: 5*(y+1)), 
-          user_id: y.even? ? User.find(1).id : User.find(2).id)
-          comment.save!
-          comments << comment
+      user: bulent)
+
+      10.times do |y|
+        puts "Creating comment #{y+1} for post #{x+1}"
+        post.comments.build(
+            body: Faker::Lorem.sentence(word_count: 5*(y+1)), 
+            user: ezel)
       end
+      posts << post
   end
+  Post.import(posts, recursive: true)
 end
-# Post.import(posts)
-# Comment.import(comments)
 puts "Done!"
 
 puts "Creating #{Post.count} posts and #{Comment.count} comments took #{elapsed.real} seconds"
