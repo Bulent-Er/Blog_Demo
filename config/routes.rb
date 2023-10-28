@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   end
   root "pages#home"
   get 'search', to: 'search#index'
-  get 'users/profile'
   get "about", to: "pages#about"
   get "/user/:id", to: "users#profile", as: "user"
 
@@ -20,4 +19,5 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+  resources :after_signup
 end

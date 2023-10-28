@@ -15,7 +15,7 @@
         <tr>
           <th scope="row"><%= post.id %></th>
           <td><%= link_to post.title.truncate(15), admin_post_path(post) %></td>
-          <td><%= link_to post.user.name, user_path(post.user) %></td>
+          <td><%= link_to post.user.full_name, user_path(post.user) %></td>
           <td><%= pluralize(post.comments.size, "Comment") %></td>
         </tr>
       <% end %>
