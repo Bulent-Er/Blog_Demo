@@ -1,11 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-# Bu kod, belirtilen e-posta adresiyle kullanıcıları oluşturur veya mevcut değilse yeni kullanıcıları oluşturur.
+
+
 bulent = User.first_or_create!(email: "bropil@gmail.com",
                               password: "123456", 
                               password_confirmation: "123456",
@@ -39,6 +33,12 @@ Address.create(street: "321 Sample St.",
                        user: ezel)
 puts "Creating Address for #{ezel.first_name} #{ezel.last_name}"
 
+category = Category.create(name: "Uncategorized", display_in_nav: true)
+Category.create(name: "Cars", display_in_nav: false)
+Category.create(name: "Bikes", display_in_nav: true)
+Category.create(name: "Boats", display_in_nav: true)
+
+
 elapsed = Benchmark.measure do
  posts = []
   10.times do |x|
@@ -47,6 +47,7 @@ elapsed = Benchmark.measure do
       title: "Post #{x+1}", 
       slug: nil,
       body: Faker::Lorem.sentence(word_count: 10*(x+1)), 
+      category: category,
       user: (x.even? ? bulent : ezel))
 
       5.times do |y|

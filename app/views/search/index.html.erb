@@ -4,18 +4,20 @@
     <thead>
       <tr>
         <th scope="col"> <%= sort_link(@query, :title, "Title", default_order: :asc) %></th>
-        <th scope="col"> <%= sort_link(@query, :body, "Blog Content")%></th>
-        <th scope="col"> <%= sort_link(@query, :user_full_name, "Created By") %></th>
-        <th scope="col"> <%= sort_link(@query, :created_at) %></th>
-        <th scope="col"> <%= sort_link(@query, :updated_at) %></th>
+        <th scope="col"> <%= sort_link(@query, :category_name, "Category", default_order: :asc) %></th>
+        <th scope="col"> <%= sort_link(@query, :content_body, "Blog Content", default_order: :asc)%></th>
+        <th scope="col"> <%= sort_link(@query, :user_first_name, "Created By", default_order: :asc) %></th>
+        <th scope="col"> <%= sort_link(@query, :created_at, default_order: :asc) %></th>
+        <th scope="col"> <%= sort_link(@query, :updated_at, default_order: :asc) %></th>
       </tr>
     </thead>
     <body>
       <% @posts.each do |post| %>
         <tr>
           <td> <%= link_to post.title.truncate_words(5), post_path(post) %> </td>
+          <td> <%= post.category.name %> </td>
           <td> <%= post.body.to_plain_text.truncate_words(10) %> </td>
-          <td> <%= link_to post.user.full_name, user_path(post.user) %> </td>
+          <td> <%= post.user.full_name %> </td>
           <td> <%= post.created_at.strftime("%Y-%b-%d %H:%M:%S") %> </td>
           <td> <%= post.updated_at.strftime("%Y-%m-%d") %> </td>
         </tr>

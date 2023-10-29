@@ -1,0 +1,10 @@
+  <li class="nav-item dropdown">
+    <%= link_to "Categories", "#", class:"dropdown-item dropdown-toggle" , id: "navbarDropdown", role: "button", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } %>
+    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+    <% categories.each do |cat| %>
+      <li><%= link_to cat.name, cat, class:"dropdown-item" %>
+    <% end %>
+      <li><hr class="dropdown-divider"></li>
+      <li><%= link_to "More", categories_path, class:"dropdown-item" %>
+    </ul>
+  </li>
