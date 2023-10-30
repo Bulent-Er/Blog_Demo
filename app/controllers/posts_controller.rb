@@ -70,10 +70,8 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find params[:id]
-      # if request.path != post_path(@post)
-      #   return redirect_to @post, :status => :moved_permanently
-      # end
+      @post = Post.friendly.find(params[:id])
+      return redirect_to @post, :status => :moved_permanently if params[:id] != @post.slug
     end
 
     def mark_notification_as_read
@@ -85,6 +83,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :image, :category_id, :pictures => [])
+      params.require(:post).permit(:title, :body, :slug, :image, :category_id, :pictures => [])
     end
 end

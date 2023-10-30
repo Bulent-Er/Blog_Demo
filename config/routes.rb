@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'admin/posts'
     get 'admin/comments'
     get 'admin/users'
-    get 'admin/show_post/:custom_slug', to: "admin#show_post", as: "admin_post"
+    get 'admin/show_post/:slug', to: "admin#show_post", as: "admin_post"
   end
   root "pages#home"
   get 'search', to: 'search#index'

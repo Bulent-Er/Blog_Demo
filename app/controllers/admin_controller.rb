@@ -13,7 +13,7 @@ class AdminController < ApplicationController
   end
 
   def show_post
-    @post = Post.includes(:user, comments: [:user, :rich_text_body]).find(params[:custom_slug])
+    @post = Post.includes(:user, comments: [:user, :rich_text_body]).find(params[:slug])
     # @comments = @post.comments.includes(:user, :rich_text_body).order(created_at: :desc)
   end
 end

@@ -17,8 +17,9 @@ class Post < ApplicationRecord
   has_rich_text :body
   has_one :content, class_name: "ActionText::RichText", as: :record, dependent: :destroy
 
-  friendly_id :custom_slug, use: [:slugged, :finders]
-  def custom_slug
+  friendly_id :slug, use: [:slugged, :finders, :history]
+  
+  def slug
     "#{id}-#{title.parameterize}"
   end
 
