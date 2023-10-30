@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  extend FriendlyId
+
+  friendly_id :slug, use: [:slugged, :finders, :history]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -46,6 +50,10 @@ class User < ApplicationRecord
     # All fields from previous steps are required if the
     # step parameter appears before or we are on the current step
     form_steps.index(step.to_s) <= form_steps.index(form_step.to_s)
+  end
+  
+  def slug
+    "#{id}-#{first_name.parameterize}_#{last_name.parameterize}"
   end
 
   private

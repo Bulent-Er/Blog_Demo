@@ -70,4 +70,6 @@ puts "Done!"
 puts "Seeded Development DB in #{elapsed.real} seconds"
 
 Post.find_each(&:save)
+Category.find_each(&:save)
+User.find_each(&:save)
 puts "Saved Friendly IDs"
