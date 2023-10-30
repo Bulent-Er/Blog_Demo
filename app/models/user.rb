@@ -56,6 +56,10 @@ class User < ApplicationRecord
     "#{id}-#{first_name.parameterize}_#{last_name.parameterize}"
   end
 
+  def should_generate_new_friendly_id?
+    first_name_changed? || last_name_changed? || slug.blank?
+  end
+  
   private
 
   def set_default_role
