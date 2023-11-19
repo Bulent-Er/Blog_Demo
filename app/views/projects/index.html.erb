@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Projects</h1>
+  <p>This page contains my most recent projects, feel free to look araund!</p>
+  <p>Web Projects contain a link to the demo, while other project containe other relevant links.</p>
+  <div id="projects">
+    <% @projects.each do |project| %>
+      <%= render project %>
+      <p>
+      </p>
+    <% end %>
+  </div>
+</div>
