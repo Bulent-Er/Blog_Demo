@@ -31,5 +31,14 @@
 
 en:
   hello: "Hello world"
-  hi: "Hi %{name}"
   site_name: "My Site"
+  test: "Test"
+  deneme: "Deneme"
+  bropil: "BroPil"
+  bro: "Bro"
+  pil: "Pil"
+  bro_pil: "BroPil"
+  bro_pil2: "BroPil2"
+  bro_pil3: "BroPil3"
+  bro_pil4: "BroPil4"
+
