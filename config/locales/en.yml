@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  hi: "Hi %{name}"
+  site_name: "My Site"
